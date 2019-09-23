@@ -1,0 +1,9 @@
+<?php
+				
+				$view_columns_query="SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='db_bt'  AND `TABLE_NAME`='r2c'";//select query for viewing users.
+				$run=mysqli_query($dbcon,$view_columns_query);//here run the sql query.				
+				 while($row=mysqli_fetch_array($run)){ ?>							
+					<th><?php echo $row[0];  ?></th>								   
+					
+				<?php } ?>
+			

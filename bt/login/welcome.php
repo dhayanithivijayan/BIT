@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include("database/db_conection.php");
 if(!$_SESSION['email'])
 {
 
@@ -8,7 +8,6 @@ if(!$_SESSION['email'])
 }
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -146,8 +145,8 @@ if(!$_SESSION['email'])
           <form class="needs-validation" novalidate>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="country">Control Revenue  </label>
-					<select class="custom-select d-block w-100" id="country" required>
+                <label for="ControlRevenue">Control Revenue  </label>
+					<select class="custom-select d-block w-100" id="ControlRevenue" required>
 					 <!-- <option value="">Choose...</option>-->
 					   <option>BUNDLE</option>
 					   <option>UNBUNDLE</option>
@@ -157,8 +156,8 @@ if(!$_SESSION['email'])
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="country">Control Category  </label>
-					<select class="custom-select d-block w-100" id="country" required>
+                <label for="ControlCategory">Control Category  </label>
+					<select class="custom-select d-block w-100" id="ControlCategory" required>
 					 <!-- <option value="">Choose...</option>-->
 					   <option>COST</option>
 					   <option>REVENUE</option>
@@ -193,32 +192,32 @@ if(!$_SESSION['email'])
 
             <div class="mb-3">
               <label for="address">Group Name</label>
-              <input type="text" class="form-control" id="address" placeholder="Hermes Fund Managers Ltd" required>
+              <input type="text" class="form-control" id="GroupName" placeholder="Hermes Fund Managers Ltd"  value="John">
               <div class="invalid-feedback">
                 Please enter Group Name.
               </div>
             </div>
 			
 			<div class="mb-3">
-              <label for="address">Account </label>
-              <input type="text" class="form-control" id="address" placeholder="OBill-771-Hermes Fund Manager" required>
+              <label for="Account">Account </label>
+              <input type="text" class="form-control" id="Account" placeholder="OBill-771-Hermes Fund Manager" value="John">
               <div class="invalid-feedback">
                 Please enter Account Number.
               </div>
             </div>
 			
 			<div class="mb-3">
-              <label for="address">Account Number</label>
+              <label for="AccountNumber">Account Number</label>
             <!--  <input type="text" class="form-control" id="address" placeholder="BTA-2001572" required> -->
-			  <input type="text" name="tags" placeholder="Tags" class="typeahead tm-input form-control tm-input-info"/>
+			  <input type="text" id="AccountNumber"  name="tags" placeholder="Tags" class="typeahead tm-input form-control tm-input-info"/>
               <div class="invalid-feedback">
                 Please enter Account Number.
               </div>
             </div>
 			
 			<div class="mb-3">
-              <label for="address">Invoice Number</label>
-              <input type="text" class="form-control" id="address" placeholder="20632698" required>
+              <label for="Invoice Number">Invoice Number</label>
+              <input type="text" class="form-control" id="InvoiceNumber" placeholder="20632698" value="John">
               <div class="invalid-feedback">
                 Please enter Invoice Number.
               </div>
@@ -226,8 +225,8 @@ if(!$_SESSION['email'])
 			
 			<div class="row">
               <div class="col-md-6 mb-3">
-                <label for="country"> Country  </label>
-					<select class="custom-select d-block w-100" id="country" required>
+                <label for="Country"> Country  </label>
+					<select class="custom-select d-block w-100" id="Country" value="John">
 					 <!-- <option value="">Choose...</option>-->					 
 					   <option>USA</option>
 					  
@@ -237,8 +236,8 @@ if(!$_SESSION['email'])
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="country">City,State </label>
-					<select class="custom-select d-block w-100" id="country" required>
+                <label for="CityState">City,State </label>
+					<select class="custom-select d-block w-100" id="CityState" required>
 					 <!-- <option value="">Choose...</option>-->
 					   <option>New York , NY</option>
 					   <option>Chicago , IL</option>
@@ -250,30 +249,30 @@ if(!$_SESSION['email'])
             </div>
 			
 			<div class="mb-3">
-              <label for="address">A Site Address</label>
-              <input type="text" class="form-control" id="address" placeholder="55 5th ave,New York, NY, 10003 USA" required>
+              <label for="ASiteAddress">A Site Address</label>
+              <input type="text" class="form-control" id="ASiteAddress" placeholder="55 5th ave,New York, NY, 10003 USA" value="John">
               <div class="invalid-feedback">
                 Please enter Site Address.
               </div>
             </div>
 			
 			<div class="mb-3">
-              <label for="address">Product</label>
-              <input type="text" class="form-control" id="address" placeholder="IP Connect Global" required>
+              <label for="Product">Product</label>
+              <input type="text" class="form-control" id="Product" placeholder="IP Connect Global" value="John">
               <div class="invalid-feedback">
                 Please enter Product.
               </div>
             </div>
 			<div class="mb-3">
-              <label for="address">Service Category</label>
-              <input type="text" class="form-control" id="address" placeholder="MPLS Access" required>
+              <label for="ServiceCategory">Service Category</label>
+              <input type="text" class="form-control" id="ServiceCategory" placeholder="MPLS Access" value="John">
               <div class="invalid-feedback">
                 Please enter Service Category.
               </div>
             </div>
 			<div class="mb-3">
-              <label for="address">Classic Site ID</label>
-              <input type="text" class="form-control" id="address" placeholder="S1158122" required>
+              <label for="ClassicSiteID">Classic Site ID</label>
+              <input type="text" class="form-control" id="ClassicSiteID" placeholder="S1158122" value="John">
               <div class="invalid-feedback">
                 Please enter Classic Site ID.
               </div>
@@ -281,15 +280,15 @@ if(!$_SESSION['email'])
 			
 			<div class="row">
               <div class="col-md-6 mb-3">
-                <label for="address">Service Period</label>
-				<input type="text" class="form-control" id="address" placeholder="01-2017" required>
+                <label for="ServicePeriod">Service Period</label>
+				<input type="text" class="form-control" id="ServicePeriod" placeholder="01-2017" value="John">
 				<div class="invalid-feedback">
 					Please enter Service Period.
 				</div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="country">USF Code </label>
-					<select class="custom-select d-block w-100" id="country" required>
+                <label for="USFCode">USF Code </label>
+					<select class="custom-select d-block w-100" id="USFCode" required>
 					 <!-- <option value="">Choose...</option>-->
 					   <option>33</option>
 					   <option>34</option>
@@ -307,8 +306,8 @@ if(!$_SESSION['email'])
             </div>
 			
 			<div class="mb-3">
-              <label for="address">Supplier Name</label>
-              <input type="text" class="form-control" id="address" placeholder="" required>
+              <label for="SupplierName">Supplier Name</label>
+              <input type="text" class="form-control" id="SupplierName" placeholder="" value="John">
               <div class="invalid-feedback">
                 Please enter Supplier Name.
               </div>
@@ -316,15 +315,15 @@ if(!$_SESSION['email'])
 			
 			<div class="row">
               <div class="col-md-6 mb-3">
-                <label for="address">Supplier Circuit ID 1</label>
-				<input type="text" class="form-control" id="address" placeholder="" required>
+                <label for="SupplierCircuitID1">Supplier Circuit ID 1</label>
+				<input type="text" class="form-control" id="SupplierCircuitID1" placeholder="" value="John">
 				  <div class="invalid-feedback">
 					Please enter Supplier Circuit ID 1.
 				  </div>
               </div>
               <div class="col-md-6 mb-3">
-                 <label for="address">Supplier Circuit ID 2</label>
-				<input type="text" class="form-control" id="address" placeholder="" required>
+                 <label for="SupplierCircuitID2">Supplier Circuit ID 2</label>
+				<input type="text" class="form-control" id="SupplierCircuitID2" placeholder="" value="John">
 				  <div class="invalid-feedback">
 					Please enter Supplier Circuit ID 2.
 				  </div>
@@ -333,15 +332,15 @@ if(!$_SESSION['email'])
 			
 			<div class="row">
               <div class="col-md-6 mb-3">
-                <label for="address">Supplier Ban 1</label>
-				<input type="text" class="form-control" id="address" placeholder="" required>
+                <label for="SupplierBan1">Supplier Ban 1</label>
+				<input type="text" class="form-control" id="SupplierBan1" placeholder="" value="John">
 				  <div class="invalid-feedback">
 					Please enter Supplier Ban 1.
 				  </div>
               </div>
               <div class="col-md-6 mb-3 ui-widget">
-                 <label for="singletags">Supplier Ban 2</label>
-				<input type="text" class="form-control" id="singletags" placeholder="" required>
+                 <label for="SupplierBan2">Supplier Ban 2</label>
+				<input type="text" class="form-control" id="SupplierBan2" placeholder="" value="John">
 				  <div class="invalid-feedback">
 					Please enter Supplier Ban 2.
 				  </div>
@@ -450,10 +449,10 @@ if(!$_SESSION['email'])
             <hr class="mb-4">          
 			<div class="row">
               <div class="col-md-6 mb-3">
-				  <button class="btn btn-primary btn-lg btn-block" type="submit">RUN </button>
+				  <button id="Run" class="btn btn-primary btn-lg btn-block" onclick="sendQuery()">RUN </button>
               </div>
               <div class="col-md-6 mb-3">
-					<button class="btn btn-primary btn-lg btn-block" type="submit">RESET </button>
+					<button id="Reset" class="btn btn-primary btn-lg btn-block" onclick="resetAll()">RESET </button>
               </div>
             </div>
 			 <hr class="mb-4">
@@ -474,17 +473,19 @@ if(!$_SESSION['email'])
    
 	<table id="example" class="lead display nowrap" style="width:100%">
         <thead>
-            <tr>
+            <tr>			
                 <th>Name</th>
                 <th>Position</th>
                 <th>Office</th>
                 <th>Age</th>
                 <th>Start date</th>
-                <th>Salary</th>
+                <th>Salary</th>	
+				
             </tr>
         </thead>
-        <tbody>
-            <tr>
+        <tbody>				
+		
+			<tr>
                 <td>Tiger Nixon</td>
                 <td>System Architect</td>
                 <td>Edinburgh</td>
@@ -492,6 +493,7 @@ if(!$_SESSION['email'])
                 <td>2011/04/25</td>
                 <td>$320,800</td>
             </tr>
+			
             <tr>
                 <td>Garrett Winters</td>
                 <td>Accountant</td>
@@ -805,7 +807,7 @@ if(!$_SESSION['email'])
                 <td>$136,200</td>
             </tr>
             <tr>
-                <td>Jackson Bradshaw</td>
+                <td>Abi</td>
                 <td>Director</td>
                 <td>New York</td>
                 <td>65</td>
@@ -990,7 +992,96 @@ if(!$_SESSION['email'])
 	
 	<script>
 	
+		var tagApi = $(".tm-input").tagsManager();
+		var formData = new FormData();
+		
+		
+	
+		
+		function sendQuery() {
+			
+			//alert(tagApi.tagsManager('tags'));
+			
+			
+			
+			
+			
+			var formData = new FormData();
+			var SupplierBan2 = [$('#SupplierBan2').val().toString()]; 
+			formData.append('SUPPLIER_BAN_2',SupplierBan2);		
+			 //alert(formData.SUPPLIER_BAN_2);
+			
+			
+			//alert('send data to db');
+			var GroupName = [$('#GroupName').val().toString()]; 			
+			formData.append('GROUP_NAME',GroupName);
+			
+			return;
+			var Account = [$('#Account').val().toString()]; 			
+			formData.append('ACCOUNT',Account);
+			
+			var AccountNumber = [$('#AccountNumber').val().toString()]; 
+			formData.append('ACCOUNT_NUMBER',AccountNumber);
+			
+			var InvoiceNumber = [$('#InvoiceNumber').val().toString()]; 
+			formData.append('INVOICE_NUMBER',InvoiceNumber);
+			
+			var ASiteAddress = [$('#ASiteAddress').val().toString()]; 
+			formData.append('A_SITE_ADDRESS',ASiteAddress);
+			
+			var Product = [$('#Product').val().toString()]; 
+			formData.append('PRODUCT',Product);
+			
+			var ServiceCategory = [$('#ServiceCategory').val().toString()]; 
+			formData.append('SERVICE_CATEGORY',ServiceCategory);
+			
+			var ClassicSiteID = [$('#ClassicSiteID').val().toString()]; 
+			formData.append('CLASSIC_SITE_ID',ClassicSiteID);
+			
+			var SupplierName = [$('#SupplierName').val().toString()]; 
+			formData.append('SUPPLIER_NAME',SupplierName);
+
+			var SupplierCircuitID1 = [$('#SupplierCircuitID1').val().toString()]; 
+			formData.append('SUPPLIER_CIRCUIT_ID_1',SupplierCircuitID1);
+			
+			var SupplierCircuitID2 = [$('#SupplierCircuitID2').val().toString()]; 
+			formData.append('SUPPLIER_CIRCUIT_ID_2',SupplierCircuitID2);
+			
+			var SupplierBan1 = [$('#SupplierBan1').val().toString()]; 
+			formData.append('SUPPLIER_BAN_1',SupplierBan1);
+			
+			var SupplierBan2 = [$('#SupplierBan2').val().toString()]; 
+			formData.append('SUPPLIER_BAN_2',SupplierBan2);		
+			 alert(formData);
+			 return;
+			
+				$.ajax({
+					type: "POST",
+					url: "getreport.php",
+					data: formData,
+					//use contentType, processData for sure.
+					contentType: false,
+					processData: false,
+					beforeSend: function() {
+						//loading image
+					},
+					success: function(data) {
+					   alert(data);
+					   //data from server
+					},
+					error: function(err) {
+						alert(err);
+						//error message
+					}
+			});
+		} 
+		
+		function resetAll() {
+			alert('reset form');
+		} 
+	
        $(document).ready(function() {
+		  
 			$('#example').DataTable( {					
 				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 				"dom": 'Bfrtip',					
@@ -1026,15 +1117,15 @@ if(!$_SESSION['email'])
 					  "Scala",
 					  "Scheme"
 			];
-			$( "#singletags" ).autocomplete({
+			$( "#SupplierBan2" ).autocomplete({
 			  source: availableTags
 			});
 					
 			//code for multiple tags
 			
-			var tagApi = $(".tm-input").tagsManager();
+		
 
-			jQuery(".typeahead").typeahead({
+			$(".typeahead").typeahead({
 			  name: 'tags',
 			  displayKey: 'name',
 			  source: function (query, process) {
@@ -1046,7 +1137,44 @@ if(!$_SESSION['email'])
 			  afterSelect :function (item){
 				tagApi.tagsManager("pushTag", item);
 			  }
+			});		
+			
+			
+			jQuery(".tm-input").on('tm:pushing', function(e, tag) {
+				alert(tag + " is almost there!");
+			});
+
+			$('#ControlRevenue').on('change', function() {
+				//alert( this.value.toString() );
+				var x = [this.value.toString()]; 
+				formData.append('CONTROL_REVENUE_BUNDLE_UNBUNDLE',x);
+				
+			});
+			$('#ControlCategory').on('change', function() {
+				//alert( this.valuenum.toString() );
+				var x = [this.value.toString()]; 
+				formData.append('CONTROL_CATEGORY_COST_REVENUE',x);
+				
+			});
+			$('#Country').on('change', function() {
+				//alert( this.valuenum.toString() );
+				var x = [this.value.toString()];  
+				formData.append('COUNTRY',x);
+				
+			});
+			$('#CityState').on('change', function() {
+				//alert( this.valuenum.toString() );
+				var x = [this.value.toString()]; 
+				formData.append('CITY_STATE',x);
+				
 			});			
+			$('#USFCODE').on('change', function() {
+				//alert( this.valuenum.toString() );
+				var x = [this.value.toString()]; 
+				formData.append('USF_CODE',x);
+				
+			});
+			
 			
 	  } );
 	  
